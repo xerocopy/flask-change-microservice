@@ -126,36 +126,29 @@ curl http://127.0.0.1:8080/change/1/34
   }
 ]
 
-#### Running Kubernetes Locally
-1. check if kube is installed ?
-kubectl cluster-info
+#### Running Kubernetes Locally !!! (Make comment not working well On a local machine. when run the app in local use http://localhost:8080/ to view the services)
 
-kubectl version
-
-Find what current contexts you have
-kubectl config view
-
-2. download the latest kube
-curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
-
-3. Make the kubectl binary executable:
-chmod +x ./kubectl
-
-4. move the binary in to your PATH:
-sudo mv  ./kubectl /usr/local/bin/kubectl
-
-5. repeat step 1 to check the installation
-kubectl cluster-info
-
-kubectl version
-
-
-6. Verify Kubernetes is working via docker-desktop context
+5. Verify Kubernetes is working via docker-desktop context
 
 (.kube-hello) ➜  kubernetes-hello-world-python-flask git:(main) kubectl get nodes
 NAME             STATUS   ROLES    AGE   VERSION
 docker-desktop   Ready    master   30d   v1.19.3
 
-7. Run the application in Kubernetes using the following command which tells Kubernetes to setup the load balanced service and run it:
+6. Run the application in Kubernetes using the following command which tells Kubernetes to setup the load balanced service and run it:
 
 kubectl apply -f kube-hello-change.yaml or run make run-kube which has the same command
+
+7. verify the container is Running
+
+kubectl get pods
+
+8. describe the load balanced service:
+kubectl describe services
+
+9. invoke the endpoint to curl it:
+curl http://127.0.0.1:8080/change/1/34
+
+
+
+#### to clean up the deployment do the following:
+ kubectl delete deployment hello-python
