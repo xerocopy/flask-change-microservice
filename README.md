@@ -24,10 +24,10 @@ Small Flask Microservice that makes change
 [
   {
     "5": "quarters"
-  }, 
+  },
   {
     "1": "nickels"
-  }, 
+  },
   {
     "4": "pennies"
   }
@@ -95,32 +95,32 @@ Result:
 4. kube-hello-change.yaml
 
 
-#### create new environment 
+#### create new environment
 python3 -m venv ~/.kube-hello && source ~/.kube-hello/bin/activate
 
 run make all
 
 
 #### Build and Run Docker Container
-Install Docker Desktop
+1. Install Docker Desktop
 
-1. docker build -t flask-change:latest . or run make build which has the same command.
+2. docker build -t flask-change:latest . or run make build which has the same command.
 
  to confirm the docker file: docker image ls
 
-2. docker run -p 8080:8080 flask-change or run make run
+3. docker run -p 8080:8080 flask-change or run make run
 
-3. In a separate terminal invoke the web service via curl, or run make invoke which has the same command
+4. In a separate terminal invoke the web service via curl, or run make invoke which has the same command
 
 curl http://127.0.0.1:8080/change/1/34
 
 [
   {
     "5": "quarters"
-  }, 
+  },
   {
     "1": "nickels"
-  }, 
+  },
   {
     "4": "pennies"
   }
