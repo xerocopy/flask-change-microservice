@@ -132,7 +132,7 @@ kubectl cluster-info
 
 kubectl version
 
-# Find what current contexts you have
+Find what current contexts you have
 kubectl config view
 
 2. download the latest kube
