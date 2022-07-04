@@ -159,3 +159,46 @@ docker-desktop   Ready    master   30d   v1.19.3
 7. Run the application in Kubernetes using the following command which tells Kubernetes to setup the load balanced service and run it:
 
 kubectl apply -f kube-hello-change.yaml or run make run-kube which has the same command
+
+
+
+
+### Load testing with locust (https://locust.io/)
+
+#### Curl
+curl http://127.0.0.1:8080/change/1/34
+
+
+#### httpie
+install: python -m pip install --upgrade pip wheel &&  python -m pip install httpie
+
+http 127.0.0.1:8080/change/1/34
+
+#### Postman
+login at: https://web.postman.co/workspace/My-Workspace~8c33987b-03a6-45c1-8225-c1f35faa1994/request/create?requestId=9dfd525b-f75d-42eb-b622-136997629b4b
+
+put the url http://ec2-3-92-96-168.compute-1.amazonaws.com:8080/change/1/34 in get 
+
+#### Python request Library allows you to invoke a request as a "one-liner" or a script.
+python -c "import requests;r=requests.get('http://127.0.0.1:8080/change/1/34');print(r.json())"
+
+Result:
+
+[{'5': 'quarters'}, {'1': 'nickels'}, {'4': 'pennies'}]
+
+
+#### Locust
+install locust
+
+create a locustfile.py
+
+run locust 
+
+if recieve error as follows ( File "/home/ec2-user/.kube-hello/lib64/python3.7/site-packages/locust/web.py", line 102, in __init__  app.jinja_options["extensions"].append("jinja2.ext.do")
+KeyError: 'extensions'), click the last line of error message linked to the web.py
+
+replace app.jinja_options['extensions'].append('jinja2.ext.do') with app.jinja_env.add_extension('jinja2.ext.do')
+
+starting interface at http://ec2-3-92-96-168.compute-1.amazonaws.com:8089/
+
+

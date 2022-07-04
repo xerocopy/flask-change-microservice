@@ -1,7 +1,8 @@
 #Flask==1.1.2 #use latest version to sovle ImportError: cannot import name 'escape' from 'jinja2' 
+Flask==2.1.0 # latest version has app.jinja_options["extensions"].append("jinja2.ext.do")  KeyError: 'extensions'
 pytest==6.2.2
 pylint==2.6.2
 pytest-cov==2.11.1
 requests==2.25.1
 locust==1.4.3
-Flask==2.1.0
+
